@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Balde food&bar — Biograd na Moru | Večeri uz luku</title>
+<meta name="description" content="Balde food&bar, Biograd na Moru — topla večernja atmosfera uz luku. KoktELI, sharing plates, žar i burgeri. Rezervirajte stol." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#10201E; --bg2:#16302B; --cream:#F3EDE2; --amber:#E8A85C; --coral:#E8765B;
+    --teal:#3E8C7F; --muted:#A9BAB3; --line:rgba(243,237,226,.14);
+    --maxw:1200px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.65}
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:500}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px}
+  ::selection{background:var(--amber);color:var(--bg)}
+
+  /* HEADER */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 0;transition:background .45s,padding .45s,box-shadow .45s}
+  header.solid{background:rgba(16,32,30,.85);backdrop-filter:blur(14px);padding:15px 0;box-shadow:0 1px 0 var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Fraunces';font-weight:600;font-size:1.5rem;letter-spacing:.01em}
+  .logo i{color:var(--amber);font-style:italic}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-size:.92rem;letter-spacing:.02em;color:var(--muted);transition:color .3s}
+  .nav-links a:not(.cta):hover{color:var(--cream)}
+  .cta{border:1px solid var(--amber);color:var(--amber)!important;padding:10px 22px;border-radius:2px;font-weight:500;letter-spacing:.04em;transition:background .3s,color .3s}
+  .cta:hover{background:var(--amber);color:var(--bg)!important}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+  .burger span{width:26px;height:1.5px;background:var(--cream);transition:.3s}
+
+  /* HERO */
+  .hero{height:100vh;min-height:640px;position:relative;display:flex;align-items:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.18);will-change:transform}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,32,30,.86) 0%,rgba(16,32,30,.55) 50%,rgba(16,32,30,.4) 100%)}
+  .hero-bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 60%,var(--bg) 100%)}
+  .hero-inner{position:relative;z-index:2;max-width:760px}
+  .eyebrow{font-family:'DM Sans';text-transform:uppercase;letter-spacing:.32em;font-size:.74rem;color:var(--amber);margin-bottom:26px;display:flex;align-items:center;gap:14px}
+  .eyebrow::before{content:"";width:42px;height:1px;background:var(--amber)}
+  .hero h1{font-size:clamp(2.8rem,7.5vw,6rem);line-height:1.02;font-weight:400;letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--amber)}
+  .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top}
+  .hero h1 .w span{display:inline-block}
+  .hero-sub{margin-top:30px;font-size:1.2rem;color:var(--muted);max-width:520px;font-weight:400}
+  .hero-cta{margin-top:40px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .btn-amber{background:var(--amber);color:var(--bg);padding:15px 32px;border-radius:2px;font-weight:700;letter-spacing:.03em;font-size:.95rem;transition:transform .3s,box-shadow .3s}
+  .btn-amber:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(232,168,92,.3)}
+  .btn-line{color:var(--cream);font-weight:500;border-bottom:1px solid var(--amber);padding-bottom:3px;transition:color .3s}
+  .btn-line:hover{color:var(--amber)}
+  .scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scroll-hint .ln{width:1px;height:40px;background:linear-gradient(var(--amber),transparent);animation:pulse 2s ease infinite}
+  @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+  /* SECTION HEAD */
+  .shead .tag{text-transform:uppercase;letter-spacing:.3em;font-size:.72rem;color:var(--amber);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .shead .tag::before{content:"";width:30px;height:1px;background:var(--amber)}
+  .shead h2{font-size:clamp(2rem,5vw,3.8rem);line-height:1.06;font-weight:400}
+  .shead h2 em{font-style:italic;color:var(--amber)}
+  .shead p{margin-top:20px;color:var(--muted);max-width:560px;font-size:1.05rem}
+
+  /* MANIFEST */
+  .manifest{padding:140px 0 120px;text-align:center}
+  .manifest .lead{font-family:'Fraunces';font-weight:400;font-size:clamp(1.6rem,4vw,2.9rem);line-height:1.32;max-width:920px;margin:0 auto;letter-spacing:-.005em}
+  .manifest .lead .word{display:inline-block;opacity:.18}
+  .manifest .lead em{font-style:italic;color:var(--amber)}
+  .manifest .sig{margin-top:46px;font-family:'Fraunces';font-style:italic;font-size:1.25rem;color:var(--amber)}
+
+  /* STORY split */
+  .story{padding:60px 0 120px}
+  .story-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+  .story-img{position:relative;border-radius:3px;overflow:hidden;aspect-ratio:5/6}
+  .story-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+  .story-img:hover img{transform:scale(1.05)}
+  .story-img .cap{position:absolute;left:22px;bottom:22px;background:rgba(16,32,30,.78);backdrop-filter:blur(6px);border:1px solid var(--line);padding:14px 20px;border-radius:2px;font-family:'Fraunces';font-style:italic;font-size:1rem;color:var(--amber)}
+  .story-text p{color:var(--muted);font-size:1.08rem;margin-bottom:20px}
+  .story-text p strong{color:var(--cream);font-weight:500}
+
+  /* COCKTAILS feature */
+  .cocktails{padding:120px 0;background:var(--bg2)}
+  .cocktails .shead{margin-bottom:60px}
+  .ck-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .ck{background:var(--bg2);padding:42px 34px;transition:background .4s}
+  .ck:hover{background:var(--bg)}
+  .ck .no{font-family:'Fraunces';font-style:italic;color:var(--amber);font-size:1.05rem;margin-bottom:20px;opacity:.8}
+  .ck h3{font-size:1.6rem;font-weight:400;margin-bottom:12px}
+  .ck h3 em{font-style:italic;color:var(--coral)}
+  .ck p{color:var(--muted);font-size:.96rem}
+
+  /* MENU */
+  .menu{padding:120px 0}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 70px;margin-top:50px}
+  .mgroup{margin-bottom:14px}
+  .mgroup .gh{font-family:'Fraunces';font-style:italic;font-size:1.55rem;color:var(--amber);margin:34px 0 20px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .mitem{padding:13px 0}
+  .mitem .nm{font-family:'Fraunces';font-weight:500;font-size:1.12rem;display:flex;align-items:center;gap:12px}
+  .mitem .nm .dot{color:var(--coral);font-size:.6rem}
+  .mitem .d{color:var(--muted);font-size:.93rem;margin-top:4px;max-width:90%}
+
+  /* GALLERY */
+  .gallery{padding:0 0 120px}
+  .gal-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:130px;gap:14px;margin-top:50px}
+  .gal-grid figure{overflow:hidden;border-radius:3px;position:relative}
+  .gal-grid figure img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease;filter:saturate(1.05)}
+  .gal-grid figure:hover img{transform:scale(1.08)}
+  .g1{grid-column:span 5;grid-row:span 3}
+  .g2{grid-column:span 4;grid-row:span 2}
+  .g3{grid-column:span 3;grid-row:span 2}
+  .g4{grid-column:span 4;grid-row:span 2}
+  .g5{grid-column:span 3;grid-row:span 2}
+
+  /* LOCATION */
+  .location{padding:120px 0;background:var(--bg2)}
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  .hours{list-style:none;margin-top:8px}
+  .hours li{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:1rem}
+  .hours li span:first-child{color:var(--muted)}
+  .hours li.bar span:last-child{color:var(--amber);font-family:'Fraunces';font-style:italic}
+  .iblock{margin-bottom:34px}
+  .iblock h4{font-family:'Fraunces';font-style:italic;color:var(--amber);font-size:1.3rem;margin-bottom:14px}
+  .iblock p{color:var(--muted);margin:6px 0}
+  .iblock a{color:var(--cream);border-bottom:1px solid var(--line)}
+  .iblock a:hover{color:var(--amber)}
+  .mapwrap{border-radius:3px;overflow:hidden;border:1px solid var(--line);min-height:420px}
+  .mapwrap iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.2) contrast(1.05)}
+
+  /* RESERVATION slide-in */
+  .res-overlay{position:fixed;inset:0;background:rgba(8,18,16,.6);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .4s;z-index:200}
+  .res-overlay.open{opacity:1;pointer-events:auto}
+  .res-panel{position:fixed;top:0;right:0;height:100%;width:420px;max-width:90vw;background:var(--bg);border-left:1px solid var(--line);z-index:201;transform:translateX(100%);transition:transform .5s cubic-bezier(.7,0,.2,1);padding:60px 44px;overflow-y:auto}
+  .res-panel.open{transform:translateX(0)}
+  .res-panel .close{position:absolute;top:24px;right:28px;font-size:1.6rem;cursor:pointer;color:var(--muted);background:none;border:0}
+  .res-panel .tag{text-transform:uppercase;letter-spacing:.3em;font-size:.7rem;color:var(--amber);margin-bottom:14px}
+  .res-panel h3{font-size:2rem;font-weight:400;margin-bottom:10px}
+  .res-panel h3 em{font-style:italic;color:var(--amber)}
+  .res-panel p{color:var(--muted);margin-bottom:28px;font-size:.98rem}
+  .res-panel .field{margin-bottom:18px}
+  .res-panel label{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:7px}
+  .res-panel input,.res-panel select{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--cream);padding:13px 14px;border-radius:2px;font-family:inherit;font-size:.95rem}
+  .res-panel input:focus,.res-panel select:focus{outline:none;border-color:var(--amber)}
+  .res-panel .btn-amber{width:100%;justify-content:center;text-align:center;margin-top:8px;border:0;cursor:pointer}
+  .res-panel .callnote{margin-top:22px;text-align:center;font-size:.9rem;color:var(--muted)}
+  .res-panel .callnote a{color:var(--amber);font-family:'Fraunces';font-style:italic}
+
+  /* CTA */
+  .ctaband{padding:130px 0;text-align:center;position:relative;overflow:hidden}
+  .ctaband .bgimg{position:absolute;inset:0;z-index:-2}
+  .ctaband .bgimg img{width:100%;height:100%;object-fit:cover}
+  .ctaband::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(16,32,30,.82)}
+  .ctaband h2{font-size:clamp(2.2rem,6vw,4.4rem);font-weight:400;line-height:1.05}
+  .ctaband h2 em{font-style:italic;color:var(--amber)}
+  .ctaband p{color:var(--muted);max-width:480px;margin:22px auto 36px;font-size:1.1rem}
+
+  /* FOOTER */
+  footer{padding:70px 0 36px;border-top:1px solid var(--line)}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:50px}
+  .foot-grid .logo{font-size:1.9rem;margin-bottom:14px}
+  .foot-grid p{color:var(--muted);max-width:330px}
+  footer h5{font-family:'DM Sans';text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--amber);margin-bottom:16px}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:10px;color:var(--muted);font-size:.95rem}
+  footer ul li a:hover{color:var(--amber)}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:.84rem;color:var(--muted)}
+
+  .reveal{opacity:0;transform:translateY(34px)}
+
+  @media(max-width:900px){
+    .nav-links{position:fixed;inset:0 0 0 auto;width:78%;max-width:340px;height:100vh;background:var(--bg2);flex-direction:column;justify-content:center;gap:30px;transform:translateX(100%);transition:transform .4s;z-index:99}
+    .nav-links.open{transform:translateX(0)}
+    .nav-links a{font-size:1.2rem}
+    .burger{display:flex;z-index:100}
+    .story-grid,.loc-grid{grid-template-columns:1fr;gap:40px}
+    .ck-grid,.menu-grid{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+    .g1,.g2,.g3,.g4,.g5{grid-column:span 1;grid-row:span 1}
+    .g1{grid-column:span 2}
+    .foot-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1!important;transform:none!important}
+    .manifest .lead .word{opacity:1!important}
+    .hero-bg img{transform:scale(1)!important}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo">Balde <i>food&amp;bar</i></a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#story">Priča</a>
+      <a href="#cocktails">Bar</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Galerija</a>
+      <a href="#location">Lokacija</a>
+      <a href="#" class="cta" id="openRes">Rezerviraj</a>
+    </nav>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=2000&q=80" alt="Večernja luka i bar" /></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Biograd na Moru · Food &amp; Bar</span>
+    <h1>
+      <span class="w"><span>Večeri</span></span> koje<br />
+      mirišu na <em><span class="w"><span>more</span></span></em> i <em><span class="w"><span>žar.</span></span></em>
+    </h1>
+    <p class="hero-sub">Kad sunce zađe nad lukom, Balde oživi. KoktELI u ruci, sharing plates na stolu i topli ritam koji traje do kasno.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-amber" id="openRes2">Rezerviraj stol</a>
+      <a href="#menu" class="btn-line">Pogledaj jelovnik</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Skrolaj</span><span class="ln"></span></div>
+</section>
+
+<section class="manifest wrap" id="manifest">
+  <p class="lead" id="manifestLead">U Dalmaciji <em>"balde"</em> su vjedra ribara — radna, iskrena, bez ukrasa. Takav je i naš bar: <em>topla svjetla</em>, dobro piće i jela koja se dijele dok luka mirno diše.</p>
+  <p class="sig reveal">— uz biogradsku rivu, do kasno u noć</p>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-img reveal">
+      <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=900&q=80" alt="Topla atmosfera bara navečer" />
+      <div class="cap">Od prvih svjetala do zadnjeg koktela</div>
+    </div>
+    <div class="story-text reveal">
+      <div class="shead" style="margin-bottom:26px">
+        <span class="tag">Naša priča</span>
+        <h2>Mjesto gdje<br /><em>večer usporava</em></h2>
+      </div>
+      <p>Ime <strong>"balde"</strong> nosi duh dalmatinskih ribara i njihovih radnih kabala — jednostavnost, ruke koje rade, ništa naglašeno. To je duh kojim kuhamo i točimo.</p>
+      <p>Danju casual food &amp; bar uz marinu; navečer toplo, prigušeno mjesto gdje se večera pretvara u druženje. <strong>Žar, svježa riba, burgeri i craft koktELI</strong> — sve s pogledom na luku.</p>
+      <p>Dođite na jedno piće, ostanite na cijelu večer. Tako to ide kod Balde.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cocktails" id="cocktails">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="tag">Iz bara</span>
+      <h2>KoktELI koji<br /><em>nose večer</em></h2>
+      <p>Svaki koktel je mali ritual — birani sastojci, lokalni okusi i ruka koja zna mjeru.</p>
+    </div>
+    <div class="ck-grid">
+      <div class="ck reveal"><div class="no">01 — Signature</div><h3>Balde <em>Spritz</em></h3><p>Aperol, pjenušac, prstak naranče i grančica svježeg ružmarina.</p></div>
+      <div class="ck reveal"><div class="no">02 — Klasik</div><h3>Maslina <em>Martini</em></h3><p>Suhi gin, vermut i dalmatinska maslina — čista, hladna elegancija.</p></div>
+      <div class="ck reveal"><div class="no">03 — Osvježenje</div><h3>Biograd <em>Mojito</em></h3><p>Rum, menta iz vrta, limeta i smeđi šećer, dobro istučeno.</p></div>
+      <div class="ck reveal"><div class="no">04 — Smoky</div><h3>Žar &amp; <em>Bourbon</em></h3><p>Bourbon, dimljeni sirup i kora naranče — topla, jesensko-ljetna nota.</p></div>
+      <div class="ck reveal"><div class="no">05 — Lokalno</div><h3>Dalmatinska <em>vina</em></h3><p>Pošip, plavac i debit — birana vina iz okolnih vinograda.</p></div>
+      <div class="ck reveal"><div class="no">06 — Craft</div><h3>Točeno <em>pivo</em></h3><p>Rotirajuća selekcija domaćih craft piva s točionika.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="tag">Jelovnik</span>
+      <h2>Za <em>podijeliti</em><br />i uživati</h2>
+      <p>Casual kuhinja s naglaskom na svježe i lokalno — žar, sharing plates i klasici koje svi vole.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="mcol">
+        <div class="mgroup"><div class="gh reveal">Sharing plates</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Daska Balde</div><div class="d">Pršut, lokalni sir, masline, namazi i kruh sa žara.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Hrskave lignje</div><div class="d">Pohane lignje, aioli s limunom i prženi peršin.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Tuna tartar</div><div class="d">Svježa tuna, avokado, sezam i prepečenac.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Kroketice s parmezanom</div><div class="d">Krumpir, ružmarin i umak od pečene paprike.</div></div>
+
+        <div class="mgroup"><div class="gh reveal">Sa žara</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Riba dana s plamena</div><div class="d">Ovisno o ulovu — blitva, krumpir i maslinovo ulje.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Glazirana rebarca</div><div class="d">Sporo pečena, BBQ glazura i coleslaw.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Ražnjići od piletine</div><div class="d">Marinirana piletina, povrće sa žara, jogurt umak.</div></div>
+      </div>
+      <div class="mcol">
+        <div class="mgroup"><div class="gh reveal">Burgeri</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Balde Classic</div><div class="d">Goveđa pljeskavica, cheddar, karamelizirani luk, Balde umak.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Crispy Chicken</div><div class="d">Hrskava piletina, slaw, krastavci i chipotle majoneza.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Veggie Garden</div><div class="d">Pljeskavica od slanutka, grillani halloumi i pesto.</div></div>
+
+        <div class="mgroup"><div class="gh reveal">Slatko</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Rožata</div><div class="d">Dalmatinski klasik s karamelom i koricom limuna.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Topli brownie</div><div class="d">Čokolada, sladoled od vanilije i slani karamel.</div></div>
+        <div class="mitem reveal"><div class="nm"><span class="dot">●</span>Sezonsko voće</div><div class="d">Lokalno voće, menta i prstak limete.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="tag">Galerija</span>
+      <h2><em>Trenuci</em> uz luku</h2>
+    </div>
+    <div class="gal-grid">
+      <figure class="g1 reveal"><img src="https://images.unsplash.com/photo-1538488881038-e252a119ace7?auto=format&fit=crop&w=1000&q=80" alt="Večernja terasa uz more" /></figure>
+      <figure class="g2 reveal"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80" alt="Koktel" /></figure>
+      <figure class="g3 reveal"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Roštilj" /></figure>
+      <figure class="g4 reveal"><img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?auto=format&fit=crop&w=800&q=80" alt="Burger" /></figure>
+      <figure class="g5 reveal"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=700&q=80" alt="Pivo i piće" /></figure>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="wrap">
+    <div class="shead reveal" style="margin-bottom:50px">
+      <span class="tag">Lokacija &amp; vrijeme</span>
+      <h2>Nađimo se <em>kod Balde</em></h2>
+    </div>
+    <div class="loc-grid">
+      <div class="reveal">
+        <div class="iblock">
+          <h4>Gdje smo</h4>
+          <p>Biograd na Moru, uz marinu</p>
+          <p>Rezervacije: <a href="tel:+385955987321">+385 95 598 7321</a></p>
+          <p>E-mail: <a href="mailto:baldefoodandbar@gmail.com">baldefoodandbar@gmail.com</a></p>
+        </div>
+        <div class="iblock">
+          <h4>Radno vrijeme</h4>
+          <ul class="hours">
+            <li><span>Ponedjeljak – Četvrtak</span><span>12:00 – 24:00</span></li>
+            <li><span>Petak – Subota</span><span>12:00 – 01:00</span></li>
+            <li><span>Nedjelja</span><span>12:00 – 24:00</span></li>
+            <li class="bar"><span>Bar</span><span>do kasno u noć</span></li>
+          </ul>
+        </div>
+        <a href="#" class="btn-amber" id="openRes3" style="display:inline-block;margin-top:6px">Rezerviraj stol</a>
+      </div>
+      <div class="mapwrap reveal">
+        <iframe src="https://maps.google.com/maps?q=Balde+food+bar+Biograd+na+Moru&output=embed" loading="lazy" title="Balde food&bar lokacija"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ctaband">
+  <div class="bgimg"><img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=2000&q=80" alt="Večernji bar uz more" /></div>
+  <div class="wrap">
+    <h2 class="reveal">Rezervirajte <em>svoju večer</em></h2>
+    <p class="reveal">Ljeti se terasa puni brzo. Javite se i osigurajte stol uz luku — ostalo prepustite nama.</p>
+    <a href="#" class="btn-amber reveal" id="openRes4">Rezerviraj stol</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">Balde <i style="color:var(--amber);font-style:italic">food&amp;bar</i></div>
+        <p>Topla večernja atmosfera uz biogradsku luku. KoktELI, žar, sharing plates i burgeri — do kasno u noć.</p>
+      </div>
+      <div>
+        <h5>Navigacija</h5>
+        <ul>
+          <li><a href="#story">Priča</a></li>
+          <li><a href="#cocktails">Bar</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Galerija</a></li>
+          <li><a href="#location">Lokacija</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+385955987321">+385 95 598 7321</a></li>
+          <li><a href="mailto:baldefoodandbar@gmail.com">baldefoodandbar@gmail.com</a></li>
+          <li>Biograd na Moru</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Balde food&amp;bar. Sva prava pridržana.</span>
+      <span>Uz biogradsku marinu · 4.6 ★ · 95 recenzija</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Reservation slide-in -->
+<div class="res-overlay" id="resOverlay"></div>
+<aside class="res-panel" id="resPanel" aria-hidden="true">
+  <button class="close" id="resClose" aria-label="Zatvori">×</button>
+  <div class="tag">Rezervacija</div>
+  <h3>Stol <em>uz luku</em></h3>
+  <p>Ostavite podatke ili nas jednostavno nazovite — javit ćemo se i potvrditi termin.</p>
+  <div class="field"><label>Ime i prezime</label><input type="text" placeholder="Vaše ime" /></div>
+  <div class="field"><label>Broj gostiju</label>
+    <select><option>1 – 2 osobe</option><option>3 – 4 osobe</option><option>5 – 6 osoba</option><option>7+ osoba</option></select>
+  </div>
+  <div class="field"><label>Datum</label><input type="date" /></div>
+  <div class="field"><label>Vrijeme</label><input type="time" /></div>
+  <a href="tel:+385955987321" class="btn-amber">Potvrdi pozivom</a>
+  <p class="callnote">ili nazovite <a href="tel:+385955987321">+385 95 598 7321</a></p>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(!reduce){
+    const lenis = new Lenis({ duration:1.15, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)) });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    if(window.gsap){ gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
+    window.__lenis = lenis;
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      if(a.id && a.id.startsWith('openRes')) return;
+      a.addEventListener('click',e=>{ const id=a.getAttribute('href'); if(id.length>1){ const el=document.querySelector(id); if(el){ e.preventDefault(); lenis.scrollTo(el,{offset:-60}); closeNav(); } } });
+    });
+  }
+
+  // header solid
+  const header=document.getElementById('header');
+  const onScroll=()=>header.classList.toggle('solid',window.scrollY>60);
+  onScroll(); window.addEventListener('scroll',onScroll);
+
+  // mobile nav
+  const burger=document.getElementById('burger'), navlinks=document.getElementById('navlinks');
+  function closeNav(){ navlinks.classList.remove('open'); }
+  burger.addEventListener('click',()=>navlinks.classList.toggle('open'));
+
+  // reservation panel
+  const resOverlay=document.getElementById('resOverlay'), resPanel=document.getElementById('resPanel');
+  function openRes(e){ if(e)e.preventDefault(); resOverlay.classList.add('open'); resPanel.classList.add('open'); resPanel.setAttribute('aria-hidden','false'); closeNav(); }
+  function closeRes(){ resOverlay.classList.remove('open'); resPanel.classList.remove('open'); resPanel.setAttribute('aria-hidden','true'); }
+  ['openRes','openRes2','openRes3','openRes4'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('click',openRes); });
+  document.getElementById('resClose').addEventListener('click',closeRes);
+  resOverlay.addEventListener('click',closeRes);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeRes(); });
+
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    if(!reduce){
+      // hero zoom-on-load
+      gsap.to('.hero-bg img',{scale:1,duration:2.4,ease:'power2.out'});
+      // word reveal hero
+      gsap.fromTo('.hero h1 .w span',{yPercent:115},{yPercent:0,duration:1.1,ease:'power4.out',stagger:.12,delay:.25});
+      gsap.fromTo('.eyebrow,.hero-sub,.hero-cta',{opacity:0,y:24},{opacity:1,y:0,duration:1,ease:'power3.out',stagger:.12,delay:.7});
+
+      // manifest word-by-word
+      const lead=document.getElementById('manifestLead');
+      const html=lead.innerHTML;
+      lead.innerHTML = html.replace(/(<em>.*?<\/em>|[^\s<]+)(?![^<]*>)/g, m=>`<span class="word">${m} </span>`);
+      gsap.to('#manifestLead .word',{opacity:1,duration:.5,ease:'none',stagger:.04,scrollTrigger:{trigger:'#manifestLead',start:'top 78%',end:'bottom 60%',scrub:.6}});
+
+      gsap.utils.toArray('.reveal').forEach(el=>{
+        gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
+      document.querySelectorAll('#manifestLead .word').forEach(el=>el.style.opacity=1);
+    }
+  } else {
+    document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none';});
+  }
+</script>
+</body>
+</html>
